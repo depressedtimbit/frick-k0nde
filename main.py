@@ -3,9 +3,11 @@ from os import getenv
 from dotenv import load_dotenv
 import discord
 from discord.ext import commands
-from discord.utils import get
+from discord.utils import get as get_channel
 
 
+# Loads Predefined Environment Variables
+load_dotenv()
 
 banwords = ['h0nde', 'twitter.com/h0nde'] # Ban-words for Detecting
 log_channel = getenv('log_channel') # Name of channel of logs
@@ -19,9 +21,6 @@ logging.basicConfig(
   level=logging.INFO
 )
 log = logging.getLogger('bot')
-
-# Loads Predefined Environment Variables
-load_dotenv()
 
 # Initialize Bot Class
 intents = discord.Intents.default()
@@ -41,7 +40,7 @@ async def on_member_join(member):
   for word in banwords:
     if member.name.lower().find(word):
       await member.ban(reason=ban_reason)
-      channel = get(member.guild.channels, name='general')
+      channel = get_channel(member.guild.channels, name=log_channel)
       await channel.send(ban_text.format(member.mention, member.id))
       break
 
