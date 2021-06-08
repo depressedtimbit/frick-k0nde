@@ -1,14 +1,13 @@
 import logging
-from os import getenv
+import re
+from os import environ
 from dotenv import load_dotenv
 import discord
 from discord.ext import commands
-from discord.utils import get
 
 
-banwords = ['h0nde', 'twitter.com/h0nde'] # Ban-words for Detecting
-log_channel = getenv('log_channel') # Name of channel of logs
-ban_text = 'User {0} (ID: `{1}`) was kicked, take a sip 🥤'
+regex_banwords = "(?i)^.*(?:twitter.com/)?h0nde" # Regex of ban words
+ban_text = 'User {0} (ID: `{1}`) was kicked, take a sip :cup_with_straw:'
 ban_reason = "Take a sip 🥤"
 
 
@@ -37,13 +36,12 @@ async def on_ready():
 # Event: On Member is Joined to Guild
 @bot.event
 async def on_member_join(member):
-  for word in banwords:
-    if member.name.lower().find(word):
-      await member.ban(reason=ban_reason)
-      channel = get(member.guild.channels, name='general')
+  if re.match(regex_banwords, member.name):
+    await member.ban(reason=ban_reason)
+    if environ.get('log_channel'):
+      channel = await bot.fetch_channel(environ.get('log_channel'))
       await channel.send(ban_text.format(member.mention, member.id))
-      break
 
 
 # Running Bot from Bot Token
-bot.run(getenv('token'))
+bot.run(environ.get('token'))
