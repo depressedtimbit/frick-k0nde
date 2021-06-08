@@ -9,7 +9,7 @@ from discord.utils import get
 
 banwords = ['h0nde', 'twitter.com/h0nde'] # Ban-words for Detecting
 log_channel = getenv('log_channel') # Name of channel of logs
-ban_text = 'User {0} (ID: `{1}`) was kicked, take a sip 🥤'
+ban_text = 'User {0} (ID: `{1}`) was banned, take a sip 🥤'
 ban_reason = "Take a sip 🥤"
 
 
