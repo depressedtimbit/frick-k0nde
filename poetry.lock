@@ -75,6 +75,14 @@ voice = ["PyNaCl (>=1.3.0,<1.5)"]
 
 [[package]]
 category = "main"
+description = "find files and dirs"
+name = "find"
+optional = false
+python-versions = "*"
+version = "2020.12.3"
+
+[[package]]
+category = "main"
 description = "Internationalized Domain Names in Applications (IDNA)"
 name = "idna"
 optional = false
@@ -110,7 +118,7 @@ idna = ">=2.0"
 multidict = ">=4.0"
 
 [metadata]
-content-hash = "e230b63752d6de7d164e567afa4ed94584fea1f5d25f9d490fbe71b2660df6e1"
+content-hash = "aab667115999a875b359cb1deb0a7847c875379b3c1353eb6a8330f14022a35e"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -172,6 +180,9 @@ discord = [
 "discord.py" = [
     {file = "discord.py-1.7.2-py3-none-any.whl", hash = "sha256:f179db299c949a8cf0a12c1b1b94d0da9a18e088857154d93ae5ab1d807ec61d"},
     {file = "discord.py-1.7.2.tar.gz", hash = "sha256:114e76cd27362fb919abf7f001a2dbdc77c9a67cff74ed6a89aecd6582ee298e"},
+]
+find = [
+    {file = "find-2020.12.3.tar.gz", hash = "sha256:7dadadb63e13de019463f13d83e0e0567a963cad99a568d0f0001ac1104d8210"},
 ]
 idna = [
     {file = "idna-3.2-py3-none-any.whl", hash = "sha256:14475042e284991034cb48e06f6851428fb14c4dc953acd9be9a5e95c7b6dd7a"},
