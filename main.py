@@ -6,15 +6,9 @@ import discord
 from discord.ext import commands
 
 
-<<<<<<< master
+
 regex_banwords = "(?i)^.*(?:twitter.com/)?h0nde" # Regex of ban words
 ban_text = 'User {0} (ID: `{1}`) was kicked, take a sip :cup_with_straw:'
-=======
-
-banwords = ['h0nde', 'twitter.com/h0nde'] # Ban-words for Detecting
-log_channel = getenv('log_channel') # Name of channel of logs
-ban_text = 'User {0} (ID: `{1}`) was banned, take a sip 🥤'
->>>>>>> master
 ban_reason = "Take a sip 🥤"
 
 
@@ -48,11 +42,6 @@ async def on_member_join(member):
     if environ.get('log_channel'):
       channel = await bot.fetch_channel(environ.get('log_channel'))
       await channel.send(ban_text.format(member.mention, member.id))
-<<<<<<< master
-
-=======
-      break
->>>>>>> master
 
 # Running Bot from Bot Token
 bot.run(environ.get('token'))
